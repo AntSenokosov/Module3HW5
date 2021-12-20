@@ -16,15 +16,15 @@ namespace Module3HW5
 
         private static async Task<string> SumStringAsync()
         {
-            string file1 = await Task.Run(() => ReadFile1Async());
-            string file2 = await Task.Run(() => ReadFile2Async());
+            var file1 = await Task.Run(() => ReadFile1Async());
+            var file2 = await Task.Run(() => ReadFile2Async());
 
             return $"{file1} {file2}";
         }
 
         private static async Task<string> ReadFile1Async()
         {
-            string result = string.Empty;
+            var result = string.Empty;
 
             using (StreamReader reader = new StreamReader("file1.txt"))
             {
@@ -36,7 +36,7 @@ namespace Module3HW5
 
         private static async Task<string> ReadFile2Async()
         {
-            string result = string.Empty;
+            var result = string.Empty;
 
             using (StreamReader reader = new StreamReader("file2.txt"))
             {

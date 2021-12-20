@@ -9,12 +9,12 @@ namespace Module3HW5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Результат: " + SumString().Result);
+            Console.WriteLine("Результат: " + SumStringAsync().Result);
 
             Console.ReadKey();
         }
 
-        private static async Task<string> SumString()
+        private static async Task<string> SumStringAsync()
         {
             string file1 = await Task.Run(() => ReadFile1Async());
             string file2 = await Task.Run(() => ReadFile2Async());

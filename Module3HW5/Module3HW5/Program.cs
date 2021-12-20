@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Module3HW5
 {
@@ -6,6 +9,41 @@ namespace Module3HW5
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Результат: " + SumStringAsync().Result);
+
+            Console.ReadKey();
+        }
+
+        private static async Task<string> SumStringAsync()
+        {
+            var file1 = await Task.Run(() => ReadFile1Async());
+            var file2 = await Task.Run(() => ReadFile2Async());
+
+            return $"{file1} {file2}";
+        }
+
+        private static async Task<string> ReadFile1Async()
+        {
+            var result = string.Empty;
+
+            using (StreamReader reader = new StreamReader("file1.txt"))
+            {
+                result = await reader.ReadToEndAsync();
+            }
+
+            return result;
+        }
+
+        private static async Task<string> ReadFile2Async()
+        {
+            var result = string.Empty;
+
+            using (StreamReader reader = new StreamReader("file2.txt"))
+            {
+                result = await reader.ReadToEndAsync();
+            }
+
+            return result;
         }
     }
 }
